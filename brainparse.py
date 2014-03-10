@@ -15,7 +15,7 @@ def discretize_time_series(time_series, threshold = 0.12):
 	print "\nDiscretizing",len( time_series ), "timeseries"
 	discretized = {}
 	for k,v in time_series.items():
-		discretized[k] = [1 if f > threshold else 0 for f in list(np.diff(v,axis=0))]
+		discretized[k] = np.array([1 if f > threshold else 0 for f in list(np.diff(v,axis=0))])
 		del time_series[k]
 	return discretized
 	
